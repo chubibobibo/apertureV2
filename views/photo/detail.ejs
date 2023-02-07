@@ -1,0 +1,130 @@
+<%- layout('layouts/boilerplate.ejs')%>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div id="carouselExample" class="carousel slide">
+                        <div class="carousel-inner">
+                            <!-- UPDATE: using forEach instead of forof because we need access to the index of the array, specifically the first item([0]) to be able to set it as "active" -->
+                            <% foundEntry.photo.forEach((allImages, index)=>{ %>
+                                <div class="carousel-item <%=index === 0? 'active': ''%>">
+                                    <img src="<%=allImages.url%>" class="d-block w-100" alt="...">
+                                </div>
+                                <% }) %>
+                        </div>
+                        <!-- carousel controls -->
+                        <% if(foundEntry.photo.length> 1){ %>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
+                                data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
+                                data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                            <% } %>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            <%=foundEntry.title%>
+                        </h4>
+                        <h6 class="card-subtitle mb-2 text-muted">Submitted by: <%=foundEntry.author.username%>
+                        </h6>
+                        <div class="card-text">
+                            <p>Location: <%=foundEntry.location%>
+                            </p>
+                        </div>
+                        <div class="mb-3">
+                            <p class="card-subtitle">
+                                <%=foundEntry.description%>
+                            </p>
+                        </div>
+                        <div class="d-flex flex-row">
+                            <a href="/photos" class="btn btn-primary m-1">All Photos</a>
+                            <% if(loggedUser && foundEntry.author.equals(loggedUser._id)){ %>
+                                <a href="/photos/<%=foundEntry._id%>/edit" class="btn btn-primary m-1">Edit</a>
+                                <form method="POST" action="/photos/<%=foundEntry._id%>?_method=DELETE">
+                                    <button class="btn btn-danger mt-2 ms-1"
+                                        style="transform: translateY(-0.3rem);">Delete</button>
+                                </form>
+                                <% } %>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- ======comment form===== -->
+
+            <div class="col-md-6">
+                <!-- <% if(loggedUser){ %> loggedUser is req.user saved in .locals -->
+                <form method="POST" action="/photos/<%=foundEntry._id%>/comment" class="mb-4 needs-validation"
+                    novalidate>
+                    <div class="card">
+                        <div class="card-body">
+                            <h2 class="text-center mb-3">Add New Comment</h2>
+                            <fieldset class="starability-growRotate">
+                                <legend>First rating:</legend>
+                                <input type="radio" id="no-rate" class="input-no-rate" name="userComment[rating]"
+                                    value="0" checked aria-label="No rating." />
+                                <input type="radio" id="first-rate1" name="userComment[rating]" value="1" />
+                                <label for="first-rate1" title="Terrible">1 star</label>
+                                <input type="radio" id="first-rate2" name="userComment[rating]" value="2" />
+                                <label for="first-rate2" title="Not good">2 stars</label>
+                                <input type="radio" id="first-rate3" name="userComment[rating]" value="3" />
+                                <label for="first-rate3" title="Average">3 stars</label>
+                                <input type="radio" id="first-rate4" name="userComment[rating]" value="4" />
+                                <label for="first-rate4" title="Very good">4 stars</label>
+                                <input type="radio" id="first-rate5" name="userComment[rating]" value="5" />
+                                <label for="first-rate5" title="Amazing">5 stars</label>
+                            </fieldset>
+
+
+                            <!-- Comment -->
+                            <div class="mb-3">
+                                <label for="comment" class="form-label">Add New Comment</label>
+                                <textarea name="userComment[body]" id="comment" cols="30" rows="5" class="form-control"
+                                    required></textarea>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                                <div class="invalid-feedback">
+                                    comment cannot be empty.
+                                </div>
+                            </div>
+                            <button class="btn btn-success">Save</button>
+                        </div>
+                    </div>
+                </form>
+                <% } %>
+
+                    <!-- comment display -->
+                    <!-- iterate over all the comment  -->
+                    <div class="mb-3">
+                        <h2 class="text-center">Comments</h2>
+                        <% for(let allComments of foundEntry.comment){ %>
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <!-- new display rating -->
+                                    <p class="starability-result" data-rating=<%=allComments.rating%>
+                                        Rated: 3 stars>
+                                    </p>
+                                    <p>Submitted by: <%=allComments.author.username %>
+                                    </p>
+                                    <h5>Comment: <%=allComments.body%>
+                                    </h5>
+                                    <% if(loggedUser && allComments.author.equals(loggedUser._id)){ %>
+                                        <form method="POST"
+                                            action="/photos/<%=foundEntry._id%>/comment/<%=allComments._id%>?_method=DELETE">
+                                            <button class="btn btn-danger mt-3">Delete</button>
+                                        </form>
+                                        <% } %>
+                                </div>
+                            </div>
+                            <% } %>
+                    </div>
+            </div>
+        </div>
+    </div>

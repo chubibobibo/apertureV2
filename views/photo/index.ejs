@@ -1,0 +1,25 @@
+<%- layout('./layouts/boilerplate.ejs') %>
+    <div class="container">
+        <h1 class="mt-5 mb-3">All Photos</h1>
+        <div class="d-flex flex-column">
+            <% for(let allPhotos of foundPhotos){ %>
+                <div class="card mx-1 mb-3">
+                    <div class="row">
+                        <img src=" <%=allPhotos.photo[0].url%>" class="img-fluid col-4" alt="...">
+                        <div class="card-body col-8 text-center">
+                            <h5 class="card-title">
+                                <%=allPhotos.title%>
+                            </h5>
+                            <p class=" card-text text-muted">
+                                <%= allPhotos.location %>
+                            </p>
+                            <p class=" card-text text-muted">
+                                Photo by: <%= allPhotos.author.username %>
+                            </p>
+                            <a href="photos/<%=allPhotos._id%>" class="btn btn-primary mt-2">Show details</a>
+                        </div>
+                    </div>
+                </div>
+                <% } %>
+        </div>
+    </div>
