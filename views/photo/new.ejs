@@ -1,0 +1,55 @@
+<%- layout('/layouts/boilerplate.ejs')%>
+    <h1 class="text-center mb-5">Add New Photo</h1>
+    <div class="row col-md-6 offset-3">
+        <form method="POST" action="/photos" novalidate class="needs-validation" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control" id="title" placeholder="Enter title of your photo"
+                    name="photos[title]" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please select a valid title.
+                </div>
+
+            </div>
+            <div class=" mb-3">
+                <label for="location" class="form-label">Location</label>
+                <input type="text" class="form-control" id="location" placeholder="Enter Location"
+                    name="photos[location]" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please select a valid location.
+                </div>
+
+            </div>
+            <div class="mb-3">
+                <label for="photo" class="form-label">Photo</label>
+                <input type="file" class="form-control" id="photo" placeholder="Upload Photo" name="image" multiple
+                    required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please select a valid photo.
+                </div>
+
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea name="photos[description]" id="decsription" cols="30" rows="10" class="form-control"
+                    required></textarea>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please select a valid description.
+                </div>
+
+            </div>
+            <button class="btn btn-success">Submit</button>
+        </form>
+    </div>
