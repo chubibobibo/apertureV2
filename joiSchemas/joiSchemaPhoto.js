@@ -7,5 +7,6 @@ const joiSchemaPhotos = Joi.object({
         // photo: Joi.string().required(),
         description: Joi.string().required(),
     }).required(),
+    deleteImages: Joi.array()
 })
 module.exports = joiSchemaPhotos

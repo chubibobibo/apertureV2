@@ -1,4 +1,5 @@
 const Photo = require('../models/photo.js');
+const cloudinary = require('cloudinary').v2;
 
 module.exports.renderIndex = async (req, res) => {
     const foundPhotos = await Photo.find({}).populate('author')
@@ -50,11 +51,21 @@ module.exports.renderEditDetail = async (req, res) => {
 
 module.exports.editDetail = async (req, res) => {
     const { id } = req.params;
-    const { photos } = req.body;
+    const { photos, deleteImages } = req.body;
+    console.log(req.body)
     const foundEntry = await Photo.findByIdAndUpdate(id, photos);
     const img = req.files.map(img => ({ url: img.path, filename: img.filename }))
     foundEntry.photo.push(...img)
     foundEntry.save()
+    //check if deleteImages(name: from form) exist then use it to pull the specific images in the photo array
+    //deletImages contain the data(filename) which we will use to pull form array
+    if (deleteImages) {
+        await Photo.updateMany({ $pull: { photo: { filename: { $in: deleteImages } } } })
+        await cloudinary.uploader.destroy(deleteImages, (error, res) => {
+            console.log(res, error)
+        });
+
+    }
     req.flash('success', 'Successfully updated your photo entry')
     res.redirect(`/photos/${foundEntry._id}`);
 }
