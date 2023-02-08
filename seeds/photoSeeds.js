@@ -16,6 +16,7 @@ const deleteInst = async () => {
 }
 
 
+
 //create new instance of model
 const photoInstance = [
     {
@@ -23,8 +24,8 @@ const photoInstance = [
         location: 'Paris',
         photo: [
             {
-                url: 'https://res.cloudinary.com/dgv0cpi2l/image/upload/v1675778498/aperturePhotos/wpj2uq543cbl1qffuh8q.png',
-                filename: 'aperturePhotos/wpj2uq543cbl1qffuh8q'
+                url: 'https://res.cloudinary.com/dxx0zratx/image/upload/v1675852032/stockImages/bastien-nvs-CKn6fbGPOpE-unsplash_sfccrf.jpg',
+                filename: 'stockImages/bastien-nvs-CKn6fbGPOpE-unsplash_sfccrf'
             }
         ],
         description: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."',
@@ -37,8 +38,8 @@ const photoInstance = [
         location: 'Paris',
         photo: [
             {
-                url: 'https://res.cloudinary.com/dgv0cpi2l/image/upload/v1675778498/aperturePhotos/wpj2uq543cbl1qffuh8q.png',
-                filename: 'aperturePhotos/wpj2uq543cbl1qffuh8q'
+                url: 'https://res.cloudinary.com/dxx0zratx/image/upload/v1675852031/stockImages/anthony-delanoix-QAwciFlS1g4-unsplash_y3dkcx.jpg',
+                filename: 'stockImages/anthony-delanoix-QAwciFlS1g4-unsplash_y3dkcx'
             }
         ],
         description: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."',
@@ -50,8 +51,8 @@ const photoInstance = [
         location: 'Paris',
         photo: [
             {
-                url: 'https://res.cloudinary.com/dgv0cpi2l/image/upload/v1675778498/aperturePhotos/wpj2uq543cbl1qffuh8q.png',
-                filename: 'aperturePhotos/wpj2uq543cbl1qffuh8q'
+                url: 'https://res.cloudinary.com/dxx0zratx/image/upload/v1675852032/stockImages/steven-lasry-m-9xIn58Poo-unsplash_ippyzb.jpg',
+                filename: 'stockImages/steven-lasry-m-9xIn58Poo-unsplash_ippyzb'
             }
         ],
         description: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."',
@@ -62,8 +63,8 @@ const photoInstance = [
         location: 'Paris',
         photo: [
             {
-                url: 'https://res.cloudinary.com/dgv0cpi2l/image/upload/v1675778498/aperturePhotos/wpj2uq543cbl1qffuh8q.png',
-                filename: 'aperturePhotos/wpj2uq543cbl1qffuh8q'
+                url: 'https://res.cloudinary.com/dxx0zratx/image/upload/v1675852032/stockImages/john-towner-UO02gAW3c0c-unsplash_dgrdey.jpg',
+                filename: 'stockImages/john-towner-UO02gAW3c0c-unsplash_dgrdey'
             }
         ],
         description: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."',
@@ -74,8 +75,8 @@ const photoInstance = [
         location: 'Paris',
         photo: [
             {
-                url: 'https://res.cloudinary.com/dgv0cpi2l/image/upload/v1675778498/aperturePhotos/wpj2uq543cbl1qffuh8q.png',
-                filename: 'aperturePhotos/wpj2uq543cbl1qffuh8q'
+                url: 'https://res.cloudinary.com/dxx0zratx/image/upload/v1675852032/stockImages/henrique-ferreira-ZyYsY0ez2D4-unsplash_zqkiem.jpg',
+                filename: 'stockImages/henrique-ferreira-ZyYsY0ez2D4-unsplash_zqkiem'
             }
         ],
         description: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."',
@@ -83,7 +84,7 @@ const photoInstance = [
     },
 ]
 
-// deleteInst(photoInstance)
+// deleteInst()
 
 //inserting the created array
 Photo.insertMany(photoInstance).then(data => { console.log(data) }).catch(err => { console.log(err) })
