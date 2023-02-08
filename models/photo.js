@@ -3,15 +3,21 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const Comment = require('./comment.js')
 
+//new schema for photo property
+const imageSchema = new Schema({
+    url: String,
+    filename: String
+})
+
+//refer to mongoose virtuals
+imageSchema.virtual('thumbnail').get(function () {
+    return this.url.replace('/upload/', '/upload/w_400/')
+})
+
 const PhotoSchema = new Schema({
     title: String,
     location: String,
-    photo: [
-        {
-            url: String,
-            filename: String,
-        }
-    ],
+    photo: [imageSchema],
     description: String,
     comment: [//multiple comments, better to be an array
         {

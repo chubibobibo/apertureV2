@@ -50,18 +50,22 @@
             <!-- 
         checkboxes -->
             <!-- itrate over all the images in this entry and make the form send the selected images to be deleted -->
-            <div class="row mt-3">
-                <% foundEntry.photo.forEach((delPhoto, index)=>{%>
-                    <div class="form-check form-check-inline">
-                        <img src="<%=delPhoto.url%>" class="img-thumbnail" alt="">
-                        <label class="form-check-label" for="image-<%=[index]%>">
-                            Delete
-                        </label>
-                        <input class="form-check-input" type="checkbox" id="image-<%=[index]%>"
-                            value="<%=delPhoto.filename%>" name="deleteImages[]">
+            <% if(foundEntry.photo[0]){ %>
+                <h4 class="mt-4">Select images to delete:</h4>
+                <% } %>
+                    <div class="row mt-3">
+                        <div class="col-12 d-flex flex-row">
+                            <% foundEntry.photo.forEach((delPhoto, index)=>{%>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="image-<%=[index]%>"
+                                        value="<%=delPhoto.filename%>" name="deleteImages[]">
+                                    <label class="form-check-label" for="image-<%=[index]%>">Delete<img
+                                            src="<%=delPhoto.thumbnail%>" class="img-thumbnail" alt=""></label>
+                                </div>
+                                <% }) %>
+                        </div>
+
                     </div>
-                    <% }) %>
-            </div>
-            <button class="btn btn-success">Update</button>
+                    <button class=" btn btn-success mt-3 mb-3">Update</button>
         </form>
     </div>
