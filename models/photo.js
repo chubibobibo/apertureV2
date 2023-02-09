@@ -17,6 +17,18 @@ imageSchema.virtual('thumbnail').get(function () {
 const PhotoSchema = new Schema({
     title: String,
     location: String,
+    //added from geodata(mapbox)
+    geometry: {
+        type: {
+            type: String,
+            enum: ['Point'],
+            required: true
+        },
+        coordinates: {
+            type: [Number],
+            required: true
+        },
+    },
     photo: [imageSchema],
     description: String,
     comment: [//multiple comments, better to be an array
