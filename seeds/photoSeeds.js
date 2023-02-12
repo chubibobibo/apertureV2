@@ -23,7 +23,7 @@ const photoInstance = [
         title: 'Montmartre',
         geometry: {
             type: 'Point',
-            coordinates: [2.275235, 48.82969],
+            coordinates: [2.3431, 48.8862],
         },
         location: 'montmartre, paris',
         photo: [
@@ -41,7 +41,7 @@ const photoInstance = [
         title: 'Trocadero',
         geometry: {
             type: 'Point',
-            coordinates: [2.275235, 48.82969],
+            coordinates: [2.285665524, 48.857663236],
         },
         location: 'trocadero, Paris',
         photo: [
@@ -58,7 +58,7 @@ const photoInstance = [
         title: 'Le Marais',
         geometry: {
             type: 'Point',
-            coordinates: [2.275235, 48.82969],
+            coordinates: [2.3582, 48.8612],
         },
         location: 'le marais, Paris',
         photo: [
@@ -74,7 +74,7 @@ const photoInstance = [
         title: 'Pigalle',
         geometry: {
             type: 'Point',
-            coordinates: [2.275235, 48.82969],
+            coordinates: [2.3373, 48.8822],
         },
         location: 'pigalle, Paris',
         photo: [
@@ -90,7 +90,7 @@ const photoInstance = [
         title: 'Montparnasse',
         geometry: {
             type: 'Point',
-            coordinates: [2.275235, 48.82969],
+            coordinates: [2.3305, 48.8393],
         },
         location: 'montparnasse, Paris',
         photo: [
