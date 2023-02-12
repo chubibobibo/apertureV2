@@ -11,5 +11,12 @@ const map = new mapboxgl.Map({
     zoom: 9, // starting zoom
 });
 
-
-    //then we need to 
+//adding a custom marker
+//refer to the mapbox gl docs
+// Create a default Marker and add it to the map.
+const marker1 = new mapboxgl.Marker()
+    .setLngLat(photoData.geometry.coordinates)
+    .addTo(map)
+    .setPopup(new mapboxgl.Popup({ offset: 25 }).setHTML(`<h5>${photoData.title}</h5> <p>${photoData.description}</p>`
+    )
+    )
