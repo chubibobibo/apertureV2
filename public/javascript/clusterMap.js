@@ -5,7 +5,7 @@
 
 mapboxgl.accessToken = mapToken
 const map = new mapboxgl.Map({
-    container: 'map', // container ID
+    container: 'cluster-map', // container ID
     style: 'mapbox://styles/mapbox/streets-v12', // style URL
     center: [2.3522, 48.8566], // starting position [lng, lat], we need data(geoJSON) from our specific campgound in the detail.ejs script
     zoom: 9, // starting zoom
@@ -106,9 +106,9 @@ map.on('load', () => {
     // description HTML from its properties.
     map.on('click', 'unclustered-point', (e) => {
         //edited the provious code from mapbox. we just added.popUpMarkup(created in PhotoSchema.virtual)that creates a link using .title  at the end and saved it to a variable so we can pass it to the .setHTML
-        const popUpText = e.features[0].properties.popUpMarkup;
+        //create a new variable for the virtual property we created. including the features which we declared in the script at index.ej
+        const popUpMarkup = e.features[0].properties.popUpMarkup;
         const coordinates = e.features[0].geometry.coordinates.slice();
-
         // Ensure that if the map is zoomed out such that
         // multiple copies of the feature are visible, the
         // popup appears over the copy being pointed to.
@@ -116,8 +116,8 @@ map.on('load', () => {
             coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
         }
         new mapboxgl.Popup()
-            .setHTML(popUpText)
             .setLngLat(coordinates)
+            .setHTML(popUpMarkup)
             .addTo(map);
 
     });

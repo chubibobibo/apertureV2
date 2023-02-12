@@ -14,7 +14,7 @@ imageSchema.virtual('thumbnail').get(function () {
     return this.url.replace('/upload/', '/upload/w_400/')
 })
 //setting mongoose to use virtuals is JSON
-const opts = { toJSON: { virtual: true } };
+const opts = { toJSON: { virtuals: true } };
 
 const PhotoSchema = new Schema({
     title: String,
@@ -48,9 +48,11 @@ const PhotoSchema = new Schema({
 //using virtuals to access the .title and .description of our specific photo entry
 //properties.popUpMarkup allows access to the function popUpMarkup in the clusterMap.
 //clusterData will return a link that will use the id of the parsed stringified data of our specific photoEntry and use .title to display the title of the marker in the popup
+//don't put double quotes in href, and check opts
 PhotoSchema.virtual('properties.popUpMarkup').get(function () {
-    return `<a href="/photos/${this._id}">${this.title}</a>`
+    return `<a href=/photos/${this._id}>${this.title}</a>`
 })
+
 
 //mongoose middleware to delete a model with all the comments in it
 // (.post) will run after the findByIdAndDelete
