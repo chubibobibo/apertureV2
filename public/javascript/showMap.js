@@ -17,6 +17,6 @@ const map = new mapboxgl.Map({
 const marker1 = new mapboxgl.Marker()
     .setLngLat(photoData.geometry.coordinates)
     .addTo(map)
-    .setPopup(new mapboxgl.Popup({ offset: 25 }).setHTML(`<h5>${photoData.title}</h5> <p>${photoData.description}</p>`
+    .setPopup(new mapboxgl.Popup({ offset: 25 }).setHTML(`<h5>${photoData.title}</h5> <p>${photoData.description.substring(0, 50)}...</p > `
     )
     )
