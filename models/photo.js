@@ -50,7 +50,7 @@ const PhotoSchema = new Schema({
 //clusterData will return a link that will use the id of the parsed stringified data of our specific photoEntry and use .title to display the title of the marker in the popup
 //don't put double quotes in href, and check opts
 PhotoSchema.virtual('properties.popUpMarkup').get(function () {
-    return `<a href=/photos/${this._id}>${this.title}</a>`
+    return `<a href=/photos/${this._id}>${this.title}</a> <p>${this.description.substring(0, 50)}...</p>`
 })
 
 
