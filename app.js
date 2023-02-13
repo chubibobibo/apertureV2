@@ -15,6 +15,8 @@ const flash = require('connect-flash');
 const User = require('./models/user.js');
 const passport = require('passport');
 const localStrategy = require('passport-local')
+const dbURL = process.env.DB_URL
+const MongoStore = require('connect-mongo');
 
 
 
@@ -37,11 +39,23 @@ const mongoose = require('mongoose');
 main().catch(err => console.log(err));
 async function main() {
     mongoose.set('strictQuery', true)
-    await mongoose.connect('mongodb://127.0.0.1:27017/aperture2');
+    await mongoose.connect(dbURL);
 }
+
+const store = new MongoStore({
+    mongoUrl: dbURL,
+    secret: 'mysecret',
+    touchAfter: 24 * 60 * 60
+})
+
+store.on('error', function (e) {
+    console.log('session store error')
+})
 
 //setting session config
 const sessionConfig = {
+    store,
+    name: 'sessionKOTo',
     secret: 'ultimateSecretCode',
     resave: false,
     saveUninitialized: true,
