@@ -1,10 +1,10 @@
 <%- layout('./layouts/boilerplate.ejs') %>
     <div class="container">
         <div class="row">
-            <div class="col-md-6 offset-md-3">
-                <div class="card shadow mb-3" style="width: 30rem">
+            <div class="col-md-6 offset-md-3 col-sm-4 offset-2 newUser">
+                <div class="card shadow mb-3 mt-4">
                     <img src="https://images.unsplash.com/photo-1501396358880-2d8f6ace3fc7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OTJ8fHN0cmVldCUyMHBob3RvZ3JhcGh5fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
-                        class="card-img-top img-thumbnail mx-auto mt-3" alt="...">
+                        class="card-img-top img-thumbnail mx-auto mt-3 img-fluid" alt="...">
                     <div class="card-body">
                         <form method="POST" action="/login">
                             <div class="mb-2">
@@ -21,7 +21,7 @@
                             <div class="mb-2">
                                 <label for="password" class="form-label">Password</label>
                                 <input type="password" class="form-control" id="password"
-                                    placeholder="Create a password" name="password">
+                                    placeholder="Enter your password" name="password">
                                 <div class="valid-feedback">
                                     Looks good!
                                 </div>
