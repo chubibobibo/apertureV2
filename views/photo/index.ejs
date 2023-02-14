@@ -1,15 +1,19 @@
 <%- layout('./layouts/boilerplate.ejs') %>
-    <div class="container">
+    <div class="container-fluid">
         <!-- mmapbox -->
         <div id='cluster-map' style='height: 350px;' class="container-fluid mt-5"></div>
+    </div>
+    <div class="container">
+
         <h1 class="mt-5 mb-3">All Photos</h1>
         <div class="d-flex flex-column">
             <% for(let allPhotos of foundPhotos){ %>
                 <div class="card mx-1 mb-3">
                     <div class="row">
                         <% if(allPhotos.photo[0]){ %>
-                            <img src=" <%=allPhotos.photo[0].url%>" class="img-fluid col-4" alt="...">
-                            <div class="card-body col-8 text-center">
+                            <img src=" <%=allPhotos.photo[0].thumbnail%>" class="img-fluid col-md-6 img-thumb"
+                                alt="...">
+                            <div class="card-body col-md-6 text-center">
                                 <h5 class="card-title">
                                     <%=allPhotos.title%>
                                 </h5>
