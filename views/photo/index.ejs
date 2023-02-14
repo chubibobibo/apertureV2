@@ -1,7 +1,7 @@
 <%- layout('./layouts/boilerplate.ejs') %>
     <div class="container-fluid">
         <!-- mmapbox -->
-        <div id='cluster-map' style='height: 350px;' class="container-fluid mt-5"></div>
+        <div id='cluster-map' style='height: 400px;' class="container-fluid mt-3"></div>
     </div>
     <div class="container">
 
@@ -11,8 +11,7 @@
                 <div class="card mx-1 mb-3">
                     <div class="row">
                         <% if(allPhotos.photo[0]){ %>
-                            <img src=" <%=allPhotos.photo[0].thumbnail%>" class="img-fluid col-md-6 img-thumb"
-                                alt="...">
+                            <img src=" <%=allPhotos.photo[0].thumbnail%>" class="img-fluid col-md-6" alt="...">
                             <div class="card-body col-md-6 text-center">
                                 <h5 class="card-title">
                                     <%=allPhotos.title%>
