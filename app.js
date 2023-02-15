@@ -19,6 +19,7 @@ const dbURL = process.env.DB_URL
 const MongoStore = require('connect-mongo');
 const mongoSanitize = require('express-mongo-sanitize');
 const sanitizeHtml = require('sanitize-html');
+const helmet = require("helmet");
 
 
 
@@ -29,6 +30,12 @@ app.set('views', path.join(__dirname, 'views'));
 
 app.engine('ejs', ejsMate);
 
+app.use(
+    helmet({
+        contentSecurityPolicy: false,
+        crossOriginEmbedderPolicy: false,
+    })
+);
 app.use(mongoSanitize());
 app.use(express.urlencoded({ extended: true }))//parsing data from forms
 app.use(methodOverride('_method'))//overide with post having ?_method=""
