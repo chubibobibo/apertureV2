@@ -1,25 +1,56 @@
 <%- layout('./layouts/boilerplate.ejs') %>
+    <div class="container-fluid">
+        <!-- mmapbox -->
+        <div id='cluster-map' style='height: 400px;' class="container-fluid mt-3"></div>
+    </div>
     <div class="container">
+
         <h1 class="mt-5 mb-3">All Photos</h1>
         <div class="d-flex flex-column">
             <% for(let allPhotos of foundPhotos){ %>
                 <div class="card mx-1 mb-3">
                     <div class="row">
-                        <img src=" <%=allPhotos.photo[0].url%>" class="img-fluid col-4" alt="...">
-                        <div class="card-body col-8 text-center">
-                            <h5 class="card-title">
-                                <%=allPhotos.title%>
-                            </h5>
-                            <p class=" card-text text-muted">
-                                <%= allPhotos.location %>
-                            </p>
-                            <p class=" card-text text-muted">
-                                Photo by: <%= allPhotos.author.username %>
-                            </p>
-                            <a href="photos/<%=allPhotos._id%>" class="btn btn-primary mt-2">Show details</a>
-                        </div>
+                        <% if(allPhotos.photo[0]){ %>
+                            <img src=" <%=allPhotos.photo[0].thumbnail%>" class="img-fluid col-md-6" alt="...">
+                            <div class="card-body col-md-6 text-center">
+                                <h5 class="card-title">
+                                    <%=allPhotos.title%>
+                                </h5>
+                                <p class=" card-text text-muted">
+                                    <%= allPhotos.location %>
+                                </p>
+                                <p class=" card-text text-muted">
+                                    Photo by: <%= allPhotos.author.username %>
+                                </p>
+                                <a href="photos/<%=allPhotos._id%>" class="btn btn-primary mt-2">Show details</a>
+                            </div>
+                            <% } else {%>
+                                <!-- changing to a default image -->
+                                <img src="https://images.unsplash.com/photo-1508050919630-b135583b29ab?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fHBhcmlzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=600&q=60"
+                                    alt="" class="img-fluid col-4">
+                                <div class="card-body col-8 text-center">
+                                    <h5 class="card-title">
+                                        <%=allPhotos.title%>
+                                    </h5>
+                                    <p class=" card-text text-muted">
+                                        <%= allPhotos.location %>
+                                    </p>
+                                    <p class=" card-text text-muted">
+                                        Photo by: <%= allPhotos.author.username %>
+                                    </p>
+                                    <a href="photos/<%=allPhotos._id%>" class="btn btn-primary mt-2">Show details</a>
+                                </div>
+                                <% } %>
+
                     </div>
                 </div>
                 <% } %>
         </div>
     </div>
+    <!-- mapbox cluster map -->
+    <script>
+        const mapToken = '<%-process.env.MAPBOX_KEY%>'
+        const photoData = { features: JSON.parse('<%-JSON.stringify(foundPhotos)%>') }
+        console.log(photoData.features)
+    </script>
+    <script src="/javascript/clusterMap.js"></script>

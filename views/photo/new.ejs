@@ -1,7 +1,7 @@
 <%- layout('/layouts/boilerplate.ejs')%>
-    <h1 class="text-center mb-5">Add New Photo</h1>
-    <div class="row col-md-6 offset-3">
-        <form method="POST" action="/photos" novalidate class="needs-validation" enctype="multipart/form-data">
+    <div class="row col-sm-8 offset-4 col-md-6 offset-3 newForm">
+        <h1 class="text-center mb-5">Add New Photo</h1>
+        <form method="POST" action="/photos" novalidate class="needs-validation m" enctype="multipart/form-data">
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
                 <input type="text" class="form-control" id="title" placeholder="Enter title of your photo"
@@ -50,6 +50,6 @@
                 </div>
 
             </div>
-            <button class="btn btn-success">Submit</button>
+            <button class="btn btn-success mb-3">Submit</button>
         </form>
     </div>
