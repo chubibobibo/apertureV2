@@ -6,7 +6,7 @@
 mapboxgl.accessToken = mapToken
 const map = new mapboxgl.Map({
     container: 'cluster-map', // container ID
-    style: 'mapbox://styles/mapbox/streets-v12', // style URL
+    style: 'mapbox://styles/mapbox/dark-v11', // style URL
     center: [2.3522, 48.8566], // starting position [lng, lat], we need data(geoJSON) from our specific campgound in the detail.ejs script
     zoom: 9, // starting zoom
 });
